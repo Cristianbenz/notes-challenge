@@ -25,7 +25,10 @@ export class NotesFormComponent {
     const note = {
       text: String(this.createForm.value.text)
     }
-    if(note.text) this._notesService.addNote(note)
+    if(note.text) {
+      this._notesService.addNote(note)
+      this._dialog.close()
+    }
   }
 
   closeForm() {
