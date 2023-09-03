@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AddNoteButtonComponent } from 'src/app/components/add-note-button/add-note-button.component';
-import { NotesListComponent } from 'src/app/components/notes-list/notes-list.component';
+import { AddToDoButtonComponent } from 'src/app/components/add-todo-button/add-todo-button.component';
+import { ToDoListComponent } from 'src/app/components/todo-list/todo-list.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, AddNoteButtonComponent, NotesListComponent],
+  imports: [CommonModule, AddToDoButtonComponent, ToDoListComponent],
   templateUrl: './home.component.html',
   styles: [
   ]
