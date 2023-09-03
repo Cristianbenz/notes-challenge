@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatDialogRef } from "@angular/material/dialog"
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button'
+import { NotesService } from 'src/app/services/notes.service';
 
 @Component({
   selector: 'app-notes-form',
@@ -14,13 +15,17 @@ import { MatButtonModule } from '@angular/material/button'
 export class NotesFormComponent {
   private _dialog: MatDialogRef<NotesFormComponent> = inject(MatDialogRef<NotesFormComponent>)
   private _formBuilder: FormBuilder = inject(FormBuilder);
+  private _notesService: NotesService = inject(NotesService)
 
   public createForm = this._formBuilder.group({
     text: ['', Validators.required],
   })
 
   addNote() {
-    console.log(this.createForm.value)
+    const note = {
+      text: String(this.createForm.value.text)
+    }
+    if(note.text) this._notesService.addNote(note)
   }
 
   closeForm() {
