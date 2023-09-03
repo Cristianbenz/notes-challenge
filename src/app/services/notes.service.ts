@@ -6,11 +6,15 @@ import { Note } from "../models/note";
 })
 export class NotesService {
     private win = window;
-
+    private storage = this.win.localStorage.getItem("notes") || "";
     addNote(note: Note) {
-        const storage = this.win.localStorage.getItem("notes") || "";
-        const notes: Array<Note> = storage? JSON.parse(storage) : [];
+        const notes: Array<Note> = this.storage? JSON.parse(this.storage) : [];
         const updatedNotes: Array<Note> = [note, ...notes]
         this.win.localStorage.setItem("notes", JSON.stringify(updatedNotes));
+    }
+
+    getNotes() {
+        const notes: Array<Note> = this.storage? JSON.parse(this.storage) : [];
+        return notes
     }
 }
