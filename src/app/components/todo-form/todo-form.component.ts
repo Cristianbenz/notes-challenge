@@ -29,7 +29,7 @@ export class ToDoFormComponent {
       description: String(this.createForm.value.description)
     }
     if(todo.title && todo.description) {
-      this._toDosService.addNote(todo)
+      this._toDosService.add(todo)
       this._dialog.close()
     }
   }
