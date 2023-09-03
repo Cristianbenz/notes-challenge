@@ -1,0 +1,10 @@
+<section class="formContainer">
+    <h3>Create a new Note</h3>
+    <form class="form" [formGroup]="createForm" (ngSubmit)="addNote()" >
+        <textarea formGroupName="text" name="text" ></textarea>
+        <section class="actionsContainer">
+            <button mat-raised-button color="accent">Enviar</button>
+            <button type="button" mat-raised-button color="warn" (click)="closeForm()">Cancelar</button>
+        </section>
+    </form>
+</section>
