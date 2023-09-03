@@ -18,14 +18,16 @@ export class NotesFormComponent {
   private _notesService: NotesService = inject(NotesService)
 
   public createForm = this._formBuilder.group({
-    text: ['', Validators.required],
+    title: ["", Validators.required],
+    description: ["", Validators.required],
   })
 
   addNote() {
     const note = {
-      text: String(this.createForm.value.text)
+      title: String(this.createForm.value.title),
+      description: String(this.createForm.value.description)
     }
-    if(note.text) {
+    if(note.title && note.description) {
       this._notesService.addNote(note)
       this._dialog.close()
     }
