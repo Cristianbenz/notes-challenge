@@ -1,31 +1,40 @@
 import { Injectable } from "@angular/core";
 import { ToDo } from "../models/todo";
+import { BehaviorSubject, Observable } from "rxjs";
 
 @Injectable({
     providedIn: "root"
 })
 export class ToDoService {
     private win = window;
-    private storage = this.win.localStorage.getItem("todos") || "";
+    
+    private toDosSubject : BehaviorSubject<Array<ToDo>>;
+    public todos : Observable<Array<ToDo>>;
 
-    addNote(todo: ToDo) {
-        const todos: Array<ToDo> = this.storage? JSON.parse(this.storage) : [];
-        const updatedToDos: Array<ToDo> = [todo, ...todos]
-        this.win.localStorage.setItem("todos", JSON.stringify(updatedToDos));
+    public get toDos() {
+        return this.toDosSubject.value;
     }
 
-    getNotes() {
-        const todos: Array<ToDo> = this.storage? JSON.parse(this.storage) : [];
-        return todos
+    constructor() {
+        const storage = this.win.localStorage.getItem("todos") || "";
+        const todos: Array<ToDo> = storage? JSON.parse(storage) : [];
+        this.toDosSubject = new BehaviorSubject<Array<ToDo>>(todos);
+        this.todos = this.toDosSubject.asObservable();
+    }
+
+    add(todo: ToDo) {
+        const updatedToDos: Array<ToDo> = [todo, ...this.toDos]
+        this.win.localStorage.setItem("todos", JSON.stringify(updatedToDos));
+        this.toDosSubject.next(updatedToDos);
     }
 
     remove(id: string) {
-        const todos: Array<ToDo> = this.storage? JSON.parse(this.storage) : [];
-        const updatedToDos = todos.filter(t => t.id !== id);
+        const updatedToDos = this.toDos.filter(t => t.id !== id);
         if(!updatedToDos.length) {
             this.win.localStorage.removeItem("todos")
         } else {
             this.win.localStorage.setItem("todos", JSON.stringify(updatedToDos));
         }
+        this.toDosSubject.next(updatedToDos);
     }
 }
