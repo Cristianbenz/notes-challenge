@@ -1,0 +1,25 @@
+@import "../../../styles/palette";
+
+.cardContainer {
+    width: 170px;
+    min-height: 300px;
+    border-radius: 10px;
+    background-color: map-get($primary, 500);
+    color: map-get($primary, contrast, 500);
+
+    @media screen and (min-width: 768px) {
+        width: 200px;
+    }
+
+    h2 {
+        margin: 0;
+        padding: 10px;
+        background-color: map-get($secondary, 500);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    p {
+        padding: 10px;
+    }
+}
