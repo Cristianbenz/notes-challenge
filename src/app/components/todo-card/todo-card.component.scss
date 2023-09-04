@@ -6,7 +6,8 @@
     border-radius: 10px;
     background-color: map-get($primary, 500);
     color: map-get($primary, contrast, 500);
-
+    word-break: break-all;
+    transition: transform 2s ease-in-out;
     @media screen and (min-width: 768px) {
         width: 200px;
     }
@@ -14,6 +15,7 @@
     h2 {
         margin: 0;
         padding: 10px;
+        color: map-get($secondary, contrast, 500);
         background-color: map-get($secondary, 500);
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
@@ -22,4 +24,10 @@
     p {
         padding: 10px;
     }
+}
+
+.action {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
 }

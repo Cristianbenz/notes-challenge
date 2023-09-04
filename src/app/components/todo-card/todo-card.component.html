@@ -1,5 +1,7 @@
-<article class="cardContainer">
+<article @myInsertRemoveTrigger class="cardContainer">
     <h2>{{todo.title}}</h2>
     <p>{{todo.description}}</p>
 </article>
-<app-remove-todo-button [id]="todo.id"></app-remove-todo-button>
+<article class="action">
+    <app-remove-todo-button [id]="todo.id"></app-remove-todo-button>
+</article>
