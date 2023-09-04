@@ -1,0 +1,14 @@
+<section class="container">
+    <article>
+        <form class="form" (ngSubmit)="state === 'signIn' ? signIn() : signUp()">
+            <ng-container>
+                <label>Username:</label>
+                <input [(ngModel)]="username" type="text" name="username" />
+                <button mat-raised-button color="accent">{{state === "signIn" ? "Sign In" : "Sign Up"}}</button>
+            </ng-container>
+        </form>
+        <span class="changeButton" (click)="changeState()">
+            Or {{state === "signIn" ? "Sign Up" : "Sign In"}}
+        </span>
+    </article>
+</section>
