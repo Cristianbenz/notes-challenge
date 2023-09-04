@@ -9,8 +9,11 @@
 ### Pre requisites
 
 - node >= 18.14.2
+> Note: install here https://nodejs.org/es
 - Angular cli >= 15.2.1
+> Note: to install run in a terminal "npm install -g @angular/cli"
 - Git
+> Note: install here https://git-scm.com/
 
 ### Instructions
 
@@ -30,7 +33,9 @@
 ### Pre requisites
 
 - Docker desktop
+> Note: install here https://www.docker.com/products/docker-desktop/
 - Git
+> Note: install here https://git-scm.com/
 
 ### Instructions
 
