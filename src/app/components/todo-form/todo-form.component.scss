@@ -18,9 +18,17 @@
         flex-direction: column;
         gap: 8px;
 
+        label {
+            color: map-get($primary, contrast, 500);
+        }
+
         textarea {
             width: 100%;
             min-height: 170px;
+        }
+
+        span {
+            color: gray
         }
 
         .actionsContainer {

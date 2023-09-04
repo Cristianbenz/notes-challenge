@@ -1,13 +1,15 @@
 <section class="formContainer">
     <h3>Create a new Note</h3>
     <form class="form" [formGroup]="createForm" (ngSubmit)="addNote()" >
-        <label>Title</label>
+        <label>Title:</label>
         <input type="text" formControlName="title" name="title" />
-        <label>Description</label>
+        <span>*Required</span>
+        <label>Description:</label>
         <textarea formControlName="description" name="description" ></textarea>
+        <span>*Required</span>
         <section class="actionsContainer">
-            <button mat-raised-button color="accent">Enviar</button>
-            <button type="button" mat-raised-button color="warn" (click)="closeForm()">Cancelar</button>
+            <button mat-raised-button color="accent" [disabled]="!createForm.valid" >Create</button>
+            <button type="button" mat-raised-button color="warn" (click)="closeForm()">Cancel</button>
         </section>
     </form>
 </section>
