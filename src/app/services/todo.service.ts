@@ -1,40 +1,55 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { ToDo } from "../models/todo";
 import { BehaviorSubject, Observable } from "rxjs";
+import { AuthService } from "./auth.service";
 
 @Injectable({
     providedIn: "root"
 })
 export class ToDoService {
     private win = window;
-    
-    private toDosSubject : BehaviorSubject<Array<ToDo>>;
+    private _toDosSubject : BehaviorSubject<Array<ToDo>>;
     public todos : Observable<Array<ToDo>>;
-
-    public get toDos() {
-        return this.toDosSubject.value;
-    }
+    private _authService: AuthService = inject(AuthService);
 
     constructor() {
-        const storage = this.win.localStorage.getItem("todos") || "";
-        const todos: Array<ToDo> = storage? JSON.parse(storage) : [];
-        this.toDosSubject = new BehaviorSubject<Array<ToDo>>(todos);
-        this.todos = this.toDosSubject.asObservable();
+        this._toDosSubject = new BehaviorSubject<Array<ToDo>>([]);
+        this.todos = this._toDosSubject.asObservable();
+        this._authService.user.subscribe(user => {
+            if(user) this._toDosSubject.next(user.toDos);
+        });
+    }
+    
+    
+
+    public get toDos() {
+        return this._toDosSubject.value;
     }
 
     add(todo: ToDo) {
         const updatedToDos: Array<ToDo> = [todo, ...this.toDos]
-        this.win.localStorage.setItem("todos", JSON.stringify(updatedToDos));
-        this.toDosSubject.next(updatedToDos);
+        const user = this._authService.getUser;
+        this.win.localStorage.setItem(String(user?.username), JSON.stringify({
+            username: user?.username,
+            toDos: updatedToDos
+        }));
+        this._toDosSubject.next(updatedToDos);
     }
 
     remove(id: string) {
         const updatedToDos = this.toDos.filter(t => t.id !== id);
+        const user = this._authService.getUser;
         if(!updatedToDos.length) {
-            this.win.localStorage.removeItem("todos")
+            this.win.localStorage.setItem(String(user?.username), JSON.stringify({
+                username: user?.username,
+                toDos: []
+            }))
         } else {
-            this.win.localStorage.setItem("todos", JSON.stringify(updatedToDos));
+            this.win.localStorage.setItem(String(user?.username), JSON.stringify({
+                username: user?.username,
+                toDos: updatedToDos
+            }));
         }
-        this.toDosSubject.next(updatedToDos);
+        this._toDosSubject.next(updatedToDos);
     }
 }
