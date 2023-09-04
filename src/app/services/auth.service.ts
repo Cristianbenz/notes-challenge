@@ -19,6 +19,10 @@ export class AuthService {
     }
 
     signIn(username: string) {
+        /* 
+            Receive the username from params, if it exists in localstorage, update the value
+            of userSubject, instead return false.
+        */
         const user = this.win.localStorage.getItem(username);
         if(user) {
             this.userSubject.next(JSON.parse(user));
@@ -29,6 +33,10 @@ export class AuthService {
     }
 
     signUp(username: string) {
+        /* 
+            Receive the username from params, if it exists in localstorage, return false,
+            instead create a new record called like the provided username into localstorage.
+        */
         const user = this.win.localStorage.getItem(username);
         if(user) {
             return false

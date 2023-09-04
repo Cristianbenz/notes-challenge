@@ -1,27 +1,45 @@
 # NotesChallenge
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.1.
+## Summary
+ 
+ A web application to create to dos, it has user authentication and storage. Application made with Angular.
 
-## Development server
+## CLI start
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Pre requisites
 
-## Code scaffolding
+- node >= 18.14.2
+- Angular cli >= 15.2.1
+- Git
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Instructions
 
-## Build
+1. Open the terminal.
+1. In the terminal, go to a desired directory.
+1. Clone this repository with the command below.
+> git clone https://github.com/Cristianbenz/todo-challenge.git
+1. In the terminal, go to the new created folder called "todo-challenge".
+1. Run the command below in the terminal.
+ > npm install.
+1. When it finish, run the command below.
+ > ng serve
+1. When it finish, open a web browser and go to localhost:4200.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Docker start
 
-## Running unit tests
+### Pre requisites
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Docker desktop
+- Git
 
-## Running end-to-end tests
+### Instructions
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. Open docker desktop.
+1. Open the terminal.
+1. In the terminal, go to a desired directory.
+1. Clone this repository with the command below.
+> git clone https://github.com/Cristianbenz/todo-challenge.git
+1. In the terminal, go to the new created folder called "todo-challenge".
+1. Run the command below in the terminal.
+ > docker compose up.
+1. When it finish, open a web browser and go to localhost:4200.

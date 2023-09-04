@@ -16,6 +16,9 @@ export class AddToDoButtonComponent {
   private _dialogRef = inject(MatDialog);
 
   openForm() {
+    /* 
+      Open the dialog with the form to create a new to do.
+    */
     this._dialogRef.open(ToDoFormComponent)
   }
 }

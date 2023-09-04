@@ -13,6 +13,10 @@ export class RemoveTodoButtonComponent {
   @Input() id: string = "";
   private _toDoService: ToDoService = inject(ToDoService);
   remove() {
+    /* 
+      Call the remove method of ToDoService and pass it the id of
+      the clicked object.
+    */
     this._toDoService.remove(this.id);
   }
 }

@@ -23,10 +23,17 @@ export class ToDoService {
     
 
     public get toDos() {
+        /* 
+            Return the list of to dos that exist when is called.
+        */
         return this._toDosSubject.value;
     }
 
     add(todo: ToDo) {
+        /* 
+            Receive a to do from params, insert it into the list of to dos
+            and update the record of the user in localstorage.
+        */
         const updatedToDos: Array<ToDo> = [todo, ...this.toDos]
         const user = this._authService.getUser;
         this.win.localStorage.setItem(String(user?.username), JSON.stringify({
@@ -37,6 +44,11 @@ export class ToDoService {
     }
 
     remove(id: string) {
+        /* 
+            Receive an to do id from params, create a new array with the existent to dos that
+            don't have the received id and update the record of the user in localstorage with
+            the new array of to dos.
+        */
         const updatedToDos = this.toDos.filter(t => t.id !== id);
         const user = this._authService.getUser;
         if(!updatedToDos.length) {

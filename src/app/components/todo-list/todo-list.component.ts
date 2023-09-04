@@ -17,6 +17,9 @@ export class ToDoListComponent implements OnInit {
   public todoList: Array<ToDo> = [];
 
   ngOnInit(): void {
+    /* 
+      Subscribe to the to dos observable and update the todoList state.
+    */
     this._notesService.todos.subscribe((todos: Array<ToDo>) => this.todoList = todos);
   }
   

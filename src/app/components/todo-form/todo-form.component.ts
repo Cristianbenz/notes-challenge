@@ -23,6 +23,10 @@ export class ToDoFormComponent {
   })
 
   addNote() {
+    /* 
+      Create a new to do object with an automatic id and the information of the
+      form.
+    */
     const todo = {
       id: new Date().toLocaleString().replace(" ", ''),
       title: String(this.createForm.value.title),
@@ -35,6 +39,9 @@ export class ToDoFormComponent {
   }
 
   closeForm() {
+    /* 
+      Close the form dialog.
+    */
     this._dialog.close()
   }
 }

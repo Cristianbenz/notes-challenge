@@ -19,6 +19,11 @@ export class UserFormComponent {
   public username: string = "";
 
   signIn() {
+    /* 
+      Call the signIn method of the AuthService and pass it the
+      username received from the input. If the user does not exist,
+      show a snack bar.
+    */
     const response = this._authService.signIn(this.username);
     if(!response) this._snack.open("User does not exist", 'Close', {
       duration: 1700
@@ -26,6 +31,11 @@ export class UserFormComponent {
   }
 
   signUp() {
+    /* 
+      Call the signUp method of the AuthService and pass it the
+      username received from the input. If the user already exists,
+      show a snack bar.
+    */
     const response = this._authService.signUp(this.username);
     if(!response) this._snack.open("User already exist", 'Close', {
       duration: 1700
@@ -33,6 +43,9 @@ export class UserFormComponent {
   }
 
   changeState() {
+    /* 
+      Set if the view should be for sign in or sign up.
+    */
     this.state = this.state === "signIn"? "signUp" : "signIn";
   }
 }
