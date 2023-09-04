@@ -36,5 +36,8 @@ $notes-challenge-theme: mat.define-dark-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+* {
+  box-sizing: border-box;
+}
+html, body { height: 100%; overflow-x: hidden; background-color: #252525; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
