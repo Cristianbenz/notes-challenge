@@ -20,12 +20,16 @@ export class UserFormComponent {
 
   signIn() {
     const response = this._authService.signIn(this.username);
-    if(!response) this._snack.open("User does not exist");
+    if(!response) this._snack.open("User does not exist", 'Close', {
+      duration: 1700
+    });
   }
 
   signUp() {
     const response = this._authService.signUp(this.username);
-    if(!response) this._snack.open("User already exist");
+    if(!response) this._snack.open("User already exist", 'Close', {
+      duration: 1700
+    });
   }
 
   changeState() {
