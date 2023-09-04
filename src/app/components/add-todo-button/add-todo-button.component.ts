@@ -9,7 +9,8 @@ import { ToDoFormComponent } from '../todo-form/todo-form.component';
   selector: 'app-add-todo-button',
   standalone: true,
   imports: [CommonModule, MatButtonModule, MatDialogModule],
-  templateUrl: './add-todo-button.component.html'
+  templateUrl: './add-todo-button.component.html',
+  styleUrls: ["./add-todo-button.component.scss"]
 })
 export class AddToDoButtonComponent {
   private _dialogRef = inject(MatDialog);

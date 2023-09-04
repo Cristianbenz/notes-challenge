@@ -1,0 +1,10 @@
+button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-weight: bolder;
+
+    &:hover {
+        transform: scale(1.2);
+    }
+}
