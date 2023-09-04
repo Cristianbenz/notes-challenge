@@ -1,0 +1,15 @@
+@import "../../../styles/palette";
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: map-get($primary, 500);
+
+    i {
+        font-size: 26px;
+        color: map-get($primary, contrast, 500);
+        font-weight: bolder;
+    }
+}
