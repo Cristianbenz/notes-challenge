@@ -1,0 +1,16 @@
+@import "../../../styles/palette";
+
+button {
+    border: 2px solid map-get($secondary, 500);
+    border-radius: 2px;
+    color: map-get($secondary, 500);
+    background: none;
+    transition: all 300ms ease-in-out;
+    font-weight: bolder;
+    cursor: pointer;
+
+    &:hover {
+        background-color: map-get($secondary, 500);
+        color: map-get($secondary, contrast, 500);
+    }
+}
