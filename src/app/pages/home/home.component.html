@@ -1,2 +1,6 @@
-<app-add-todo-button></app-add-todo-button>
-<app-todo-list></app-todo-list>
+<section class="homeContainer">
+    <h1 class="username" *ngIf="user" >{{user.username}}</h1>
+    <app-add-todo-button *ngIf="user" ></app-add-todo-button>
+    <app-todo-list *ngIf="user" ></app-todo-list>
+    <app-user-form *ngIf="!user" ></app-user-form>
+</section>

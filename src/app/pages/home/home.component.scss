@@ -1,0 +1,10 @@
+@import "../../../styles/palette";
+
+.homeContainer {
+    padding: 13px;
+    height: 100%;
+
+    .username {
+        color: map-get($primary, contrast, 500);
+    }
+}
